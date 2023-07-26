@@ -8,12 +8,14 @@
 
 int main(void)
 {
+	char *command;
+
 	while (1)
 	{
 		/* Display prompt and wait for user input */
 		display_prompt();
 		/* Read the user input (command) */
-		char *command = read_command();
+		command = read_command();
 
 		if (command == NULL)
 		{
