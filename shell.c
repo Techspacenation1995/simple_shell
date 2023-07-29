@@ -2,21 +2,30 @@
 
 /**
  * main - Entry point
- * @ac: Argument counts
- * @av: Argument vector
- * @env: Environment variable
  *
  * Return: Zero on success.
  */
 
-int main(int ac, char **av, char **env)
+int main(void)
 {
-	/* Ignore unused arguments */
+	char *command;
 
-	(void)ac;
-	(void)av;
+	while (1)
+	{
+		/* Display prompt and wait for user input */
+		display_prompt();
+		/* Read the user input (command) */
+		command = read_command();
 
-	run_shell(env);
+		if (command == NULL)
+		{
+			/* End of file (Ctrl+D) or error */
+			break;
+		}
+		/* Execute the command */
+		execute_command(command);
+		/* Free the dynamically allocated memory for command buffer */
+		free(command);
+	}
 	return (0);
-
 }
