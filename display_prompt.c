@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * prompt - A function that prompts a user.
+ * display_prompt - A function that prompts a user.
  *
  * Return: void
  */

@@ -16,7 +16,7 @@ void display_prompt(void);
 int _putchar(char c);
 void interactive_mode(void);
 void non_interactive_mode(void);
-char *_getline(void);
+char *shellgetline(void);
 char **_strtok(char *str, char *delim);
 char *_strncat(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
