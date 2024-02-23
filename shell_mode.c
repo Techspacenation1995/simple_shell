@@ -1,9 +1,9 @@
 #include "shell.h"
 
-char **_strtokr(char *str, char *delim);
+char **_strtokr(char *str, char *delimeter);
 
 /**
- * interactive - prints prompt ($ ).
+ * interactive_mode - prints prompt ($ ).
  *
  * Return: void.
  */
@@ -25,7 +25,7 @@ void interactive_mode(void)
 		{
 			/* str = {"ls",  */
 			str = _strtok(terminal, " \n"); /* Return an array of strings */
-			control = executeBuiltins(str);
+			control = executions(str);
 			terminal = strtok(NULL, ";");
 		}
 
@@ -51,7 +51,7 @@ void non_interactive(void)
 	/* char delim[] = {' ', '\n'}; */
 
 	do {
-		 prompt();
+		display_prompt();
 		stream = get_input();
 		/* printf("Input is %s\n", stream); */
 
@@ -62,7 +62,7 @@ void non_interactive(void)
 		while (terminal)
 		{
 			str = _strtokr(terminal, " \n");
-			control = executeBuiltins(str);
+			control = executions(str);
 			terminal = strtok(NULL, ";");
 		}
 
