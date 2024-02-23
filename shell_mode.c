@@ -8,7 +8,7 @@ char **_strtokr(char *str, char *delim);
  * Return: void.
  */
 
-void interactive(void)
+void interactive_mode(void)
 {
 	char *stream = NULL;
 	char *terminal = NULL;/* Interactive command one to tokenize to command two */
@@ -17,7 +17,7 @@ void interactive(void)
 	/* char delim[] = {' ', '\n'}; */
 
 	do {
-		prompt();
+		display_prompt();
 		stream = shellgetline(); /* command from keyboard */
 		terminal = strtok(stream, ";"); /* terminal = "ls -l /tmp" */
 

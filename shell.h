@@ -28,7 +28,7 @@ int _execute(char *path, char **argv);
 int check(char *str, char **buffer);
 void free_tokens(char **tokens);
 void putstream(char *str, int stream);
-int executeBuiltins(char **str);
+int executions(char **string);
 int exec_cd_dir(char **argv);
 int exec_env(char **str);
 int exec_exit(char **str);
