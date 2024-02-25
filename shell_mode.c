@@ -30,7 +30,7 @@ void interactive_mode(void)
 		}
 
 		free(stream);
-		free_tokens(str);
+		free_token(str);
 		if (control >= 0)
 			exit(control);
 	} while (1);

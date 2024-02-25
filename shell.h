@@ -26,7 +26,7 @@ char *_strcpy(char *dest, char *src);
 void add_path(char *arg, char **argv);
 int _execute(char *path, char **argv);
 int check(char *str, char **buffer);
-void free_tokens(char **tokens);
+void free_token(char **tokens);
 void putstream(char *str, int stream);
 int executions(char **string);
 int exec_cd_dir(char **argv);
