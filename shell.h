@@ -36,7 +36,7 @@ int execute(char *av[]);
 void terminate(ssize_t n, char *k);
 char *get_input(void);
 char **_strtokr(char *str, char *delim);
-void print_token(char **);
+void print_token(char **tokens);
 
 /**
  * struct BuiltInCommands - Structure to hold information

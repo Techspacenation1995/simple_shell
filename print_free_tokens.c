@@ -2,16 +2,18 @@
 
 /**
  * print_token - A function to print an array of strings
- * @token: strings to print
+ * @tokens: strings to print
  */
 
-void print_token(char **token)
+void print_token(char **tokens)
 {
 	int i = 0;
+	char *store;
 
 	while (token[i])
 	{
-		printf("token[%d] = %s\n", i, token[i]);
+		store = tokens[i];
+		_puts(store);
 		i++;
 	}
 }
