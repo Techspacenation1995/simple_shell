@@ -16,17 +16,14 @@ void display_prompt(void);
 int _putchar(char c);
 void interactive_mode(void);
 void non_interactive_mode(void);
-int executecommand(char *command, char *args[]);
 char *shellgetline(void);
-void waitForChildProcess(pid_t pid, int *status);
-char *buildFullPath(const char *directory, const char *command);
 char **_strtok(char *str, char *delimeter);
 char *_strncat(char *dest, char *src, int n);
+int execute(char *av[])
 int _strcmp(char *s1, char *s2);
 void _puts(char *str);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
-int execute(char *av[]);
 void add_path(char *arg, char **argv);
 int _execute(char *path, char **argv);
 int check(char *str, char **buffer);

@@ -6,66 +6,125 @@
  *
  * Return: (-1)
  */
-
 int execute(char *av[])
 {
-	pid_t forkRV;
-	int status;
+if (av == NULL || av[0] == NULL || av[0][0] == '\0')
+{
+_puts("Invalid command.\n");
+return (-1);
+}
+if (access(av[0], F_OK) == 0)
+{
+return (executeCommand(av[0], av));
+}
+else if (av[0][0] != '/' && av[0][0] != '.')
+{
+return (executeFromPath(av[0], av));
+}
+else
+{
+_puts("Command not found");
+return (-1);
+}
+}
+/**
+ * executecommand - executes a command with child process
+ *@command: the command to execute
+ *@args: the arguments
+ *Return: -1 if failed or status value
+ */
+int executecommand(char *command, char *args[])
+{
+pid_t pid = fork();
+int status;
+if (pid < 0)
+{
+perror("Fork failed");
+return (-1);
+}
+if (pid == 0)
+{
+if (execve(command, args, environ) == -1)
+{
+perror("Error");
+free_tokens(args);
+exit(EXIT_FAILURE);
+}
+}
+else
+{
+waitForChildProcess(pid, &status);
+return (WIFEXITED(status) ? WEXITSTATUS(status) : 0);
+}
+}
 
-	if (av == NULL || av[0] == NULL || av[0][0] == '\0')
-	{
-		write(STDERR_FILENO, "Invalid command.\n", 17);
-		return (-1);
-	}
-
-	forkRV = fork();
-	if (forkRV < 0)
-	{
-		perror("Fork failed");
-		return (-1);
-	}
-
-	if (forkRV == 0)
-	{
-		char *full_path = "/bin/";  // You need to provide the correct path to the executable
-		char *full_command = malloc(strlen(full_path) + strlen(av[0]) + 1);
-		if (full_command == NULL)
-		{
-			perror("Error");
-			free_tokens(av);
-			exit(EXIT_FAILURE);
-		}
-
-		strcpy(full_command, full_path);
-		strcat(full_command, av[0]);
-
-		char *envp[] = {"VAR=value", NULL};  // Example environment variable
-
-		if (execve(full_command, av, envp) == -1)
-		{
-			perror("Error");
-			free_tokens(av);
-			free(full_command);
-			exit(EXIT_FAILURE);
-		}
-
-		free(full_command);  // Free allocated memory for full_command
-	}
-	else
-	{
-		do {
-			if (waitpid(forkRV, &status, WUNTRACED) == -1)
-			{
-				perror("Waitpid failed");
-				return (-1);
-			}
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-
-		if (WIFEXITED(status))
-		{
-			return (WEXITSTATUS(status));
-		}
-	}
-
-	return (0);
+/**
+ * waitForChildProcess - waits for the child process to run
+ * @pid: process id of the child
+ * @status: status value of the process
+ */
+void waitForChildProcess(pid_t pid, int *status)
+{
+do {
+if (waitpid(pid, status, WUNTRACED) == -1)
+{
+perror("Waitpid failed");
+exit(EXIT_FAILURE);
+}
+}
+while
+{
+(!WIFEXITED(*status) && !WIFSIGNALED(*status));
+}
+}
+/**
+ * executeFromPath - executes command found in path
+ * @command: the executable command
+ * @args: arguements to command
+ *Return: result or -1 if failed
+ */
+int executeFromPath(char *command, char *args[])
+{
+char *path = getenv("PATH");
+if (path == NULL)
+{
+_puts("PATH environment variable not set.\n");
+return (-1);
+}
+char *path_copy = strdup(path);
+char *token = strtok(path_copy, ":");
+while (token != NULL)
+{
+char *full_path = buildFullPath(token, command);
+if (access(full_path, F_OK) == 0)
+{
+int result = executeCommand(full_path, args);
+free(full_path);
+free(path_copy);
+return (result);
+}
+free(full_path);
+token = strtok(NULL, ":");
+}
+free(path_copy);
+_puts("Command not found");
+return (-1);
+}
+/**
+ * buildFullPath - builds the full pathe of the executable command
+ * @directory: the location to store the command
+ * @command: the command
+ * Return: returns the full path
+ */
+char *buildFullPath(const char *directory, const char *command)
+{
+char *full_path;
+full_path = malloc(strlen(directory) + strlen(command) + 2);
+if (full_path == NULL)
+{
+perror("Memory allocation error");
+exit(EXIT_FAILURE);
+}
+sprintf(full_path, "%s/%s", directory, command);
+return (full_path);
 }
