@@ -13,7 +13,7 @@ int main(int argc, char *argv[], char *env[])
 	list_paths *current;
 
 	status = &s;
-	op_mode = check_mode(argc);
+	op_mode = mode(argc);
 	if (op_mode != INTERACTIVE_MODE)/*checking the file after the command*/
 		command_lines = scan_command_files(op_mode, argv[1], argv[0]);
 	current = paths_to_linkedlist();/*turning the path current to a linked */
@@ -39,7 +39,7 @@ int main(int argc, char *argv[], char *env[])
 			free(command);
 			continue;
 		}
-		if (dir_check(cmd_arr[0], argv, count, cmd_arr, status, command) == 0)
+		if (checkdir(cmd_arr[0], argv, count, cmd_arr, status, command) == 0)
 			continue;
 		if (builtin_handler(command, cmd_arr, current, argv[0],
 			count, status, NULL, command_lines, argv) != 0)

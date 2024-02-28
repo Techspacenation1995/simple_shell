@@ -43,7 +43,7 @@ char **noninteractive_files_handler(char *file_name, char *shell_name)
 	}
 	else
 	{
-		cant_open_handler(shell_name, 0, file_name);
+		no_file_handler(shell_name, 0, file_name);
 		exit(127);
 	}
 	return (NULL);

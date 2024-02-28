@@ -1,16 +1,15 @@
 #include"shell.h"
-/*betty done*/
 /**
-* directory_check - checks if a directory exists and is accessible
+* checkdir - checks if a directory exists and accessible
 * @command: the name of the directory to check
-* @argument_vector:.
-* @count:.
-* @command_array:.
-* @status:.
-* @command_line_before:.
+* @argument_vector: arguement vectors
+* @count: count of arguements
+* @command_array: an array of commands
+* @status: status value variable
+* @command_line_before: previous command is....
 * Return: 1 if the directory exists and is accessible, else 0
 */
-int dir_check(char *command, char **argument_vector, int count,
+int checkdir(char *command, char **argument_vector, int count,
 char **command_array, int *status, char *command_line_before)
 {
 	struct stat st;

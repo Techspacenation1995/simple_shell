@@ -16,7 +16,7 @@ char **line_to_vector(char *command, int status)
 	copied_line = _strdup(command);
 	if (copied_line == NULL)
 		return (NULL); /*can't cpy*/
-	character_count = char_count(copied_line, ' ');
+	character_count = countCharacters(copied_line, ' ');
 	argument_vector = malloc((character_count + 1) * sizeof(char *));
 	token = _strtok(copied_line, TOK_D);
 

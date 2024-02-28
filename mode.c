@@ -1,15 +1,12 @@
 #include"shell.h"
-/*betty done*/
 /**
- * check_mode - a function that checks the mode of my terminal
+ * mode - a function that checks the mode of my terminal
  *
  * @argc: arguments count
  *
  * Return: 1 in case of interactive mode
- * 0 in case of non interactive mode
- * -1 in case of error
 */
-int check_mode(int argc)
+int mode(int argc)
 {
 	struct stat stdin_stat;
 

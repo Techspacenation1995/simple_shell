@@ -46,10 +46,10 @@ list_paths *env_list, char **command_lines, char **argv)
 			current, shell_name, count, status, env_list, command_lines);
 			break;
 		case 2:
-			custom_cd(command_array, argv);
+			implement_cd(command_array, argv);
 			break;
 		case 3:
-			custom_setenv(command_array[1], command_array[2], current);
+			implement_setenv(command_array[1], command_array[2], current);
 			break;
 		default:
 			return (-1);
