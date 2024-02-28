@@ -28,7 +28,7 @@ void nonbuiltin_handler(char **command_array, char *env[], int *status,
 		}
 		else
 		{
-			print_error(argv[0], count, command_array[0], NOT_FOUND);/*----lsa----*/
+			printError(argv[0], count, command_array[0], NOT_FOUND);/*----lsa----*/
 			*status = NOT_FOUND;
 		}
 	}

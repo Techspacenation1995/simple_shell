@@ -35,7 +35,7 @@ char **handle_non_interactivefile(char *file_name, char *shell_name)
 			close(fd);
 			text[letters_read - 1] = '\0';
 			if (text)
-				command_lines = text_to_array(text);
+				command_lines = convert2Array(text);
 			return (command_lines);
 		}
 		else

@@ -42,13 +42,13 @@ list_paths *env, char **command_lines)
 				else
 				{
 					*status = EXIT_ERROR;
-					print_error(shell_name, count, command_array[1], EXIT_ERROR);
+					printError(shell_name, count, command_array[1], EXIT_ERROR);
 				}
 			}
 			else
 			{
 				*status = EXIT_ERROR;
-				print_error(shell_name, count, command_array[1], EXIT_ERROR);
+				printError(shell_name, count, command_array[1], EXIT_ERROR);
 			}
 		}
 	}
@@ -72,7 +72,7 @@ void free_whole(char **command_lines, int count, list_paths *env,
 		if (command_lines)
 			free(command_lines);
 	}
-	free_list(env);
-	free_list(current);
+	freeList(env);
+	freeList(current);
 	free_all(command, command_array);
 }

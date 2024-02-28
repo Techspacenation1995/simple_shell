@@ -1,12 +1,12 @@
 #include"shell.h"
 /**
- * text_to_array - converts text to an array of strings
+ * convert2Array - converts text **strings
  *
  * @text_read: the text to convert
  *
  * Return: a pointer to a char array containing the converted text
  */
-char **text_to_array(char *text_read)
+char **convert2Array(char *text_read)
 {
 	char *token, *command;
 	char **command_lines;
@@ -16,7 +16,7 @@ char **text_to_array(char *text_read)
 	characters_count = 0;
 	command_lines = NULL;
 	i = 0;
-	characters_count = piped_characters_count(text_read, '\n');
+	characters_count = pipedCount(text_read, '\n');
 	command_lines = (char **)malloc((characters_count + 1) * sizeof(char *));
 	token = strtok(text_read, "\n");
 	command = _strdup(token);

@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * builtin_handler - Handles built-in commands.
+ * builtInCommands - Handles built-in commands.
  * @command: The original command entered by the user.
  * @command_array: An array of strings containing the parsed command.
  * @current: A pointer to a list_paths struct representing the current path.
@@ -15,7 +15,7 @@
  * Return: The function returns 0 on successful execution of a built-in command
  * -1 if the command is not a built-in command
  */
-int builtin_handler(char *command, char **command_array, list_paths *current,
+int builtInCommands(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status,
 list_paths *env_list, char **command_lines, char **argv)
 {
@@ -39,7 +39,7 @@ list_paths *env_list, char **command_lines, char **argv)
 	switch (n)
 	{
 		case 0:
-			print_env(status);
+			printEnviroment(status);
 			break;
 		case 1:
 			exit_handler(command, command_array,

@@ -14,7 +14,6 @@ int _conv_string(char *s)
 	x = 0;
 	y = 0;
 
-	/* Iterate through each character of the string */
 	while (s[x] != '\0')
 	{
 		/* Check if the character is a non-digit */

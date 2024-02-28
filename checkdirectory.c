@@ -18,7 +18,7 @@ if (stat(command, &st) == 0)
 {
 	if (S_ISDIR(st.st_mode))
 	{
-		print_error(argument_vector[0], count, command_array[0], PERMISSION_DENIED);
+		printError(argument_vector[0], count, command_array[0], PERMISSION_DENIED);
 		*status = PERMISSION_DENIED;
 		free_all(command_line_before, command_array);
 		return (0);

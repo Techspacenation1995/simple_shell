@@ -14,9 +14,9 @@ int main(int argc, char *argv[], char *env[])
 
 	status = &s;
 	op_mode = mode(argc);
-	if (op_mode != INTERACTIVE_MODE)/*checking the file after the command*/
-		command_lines = scan_command_files(op_mode, argv[1], argv[0]);
-	current = paths_to_linkedlist();/*turning the path current to a linked */
+	if (op_mode != INTERACTIVE_MODE)
+		command_lines = scanCommands(op_mode, argv[1], argv[0]);
+	current = tokenised();
 	while (non_interactive && ++count)
 	{
 		if (op_mode == NON_INTERACTIVE_MODE || op_mode == NON_INTERACTIVE_PIPE)
@@ -30,7 +30,7 @@ int main(int argc, char *argv[], char *env[])
 			}
 		}
 		else if (op_mode == INTERACTIVE_MODE)
-			command = scan_cmd_user(current); /*prompt user&get command*/
+			command = _getline(current);
 		if (!command)
 			continue;
 		cmd_arr = Handle_arrays(command, *status);
@@ -41,12 +41,11 @@ int main(int argc, char *argv[], char *env[])
 		}
 		if (checkdir(cmd_arr[0], argv, count, cmd_arr, status, command) == 0)
 			continue;
-		if (builtin_handler(command, cmd_arr, current, argv[0],
+		if (builtInCommands(command, cmd_arr, current, argv[0],
 			count, status, NULL, command_lines, argv) != 0)
 			nonbuiltin_handler(cmd_arr, env, status, count, current, argv);
 		free_all(command, cmd_arr);
 	}
-	free_list(current);
+	freeList(current);
 	exit(*status);
 }
-

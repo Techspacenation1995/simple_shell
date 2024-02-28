@@ -40,7 +40,7 @@ char **pipes_handler()
 	{
 		_strcpy(text_read, c);
 		text_read[total_characters_read] = '\0';
-		command_lines = text_to_array(text_read);
+		command_lines = convert2Array(text_read);
 	}
 	return (command_lines);
 }

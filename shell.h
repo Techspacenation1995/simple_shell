@@ -36,10 +36,10 @@ typedef struct list_paths
 } list_paths;
 
 extern char **environ;
-list_paths *paths_to_linkedlist();
+list_paths *tokenised();
 size_t print_list(const list_paths *h);
-void free_list(list_paths *head);
-list_paths *add_node(list_paths **head, char *path);
+void freeList(list_paths *head);
+list_paths *node(list_paths **head, char *path);
 unsigned int countCharacters(char *string, char character);
 /*-----------*/
 
@@ -51,10 +51,10 @@ char *_strcat(char *dest, char *src);
 int _conv_string(char *s);
 void convertint(int n, char *str);
 /*----------*/
-void print_env(int *status);
+void printEnviroment(int *status);
 int mode(int argc);
 char *confirmaccess(char *command, list_paths *current);
-char *scan_cmd_user(list_paths *current);
+char *_getline(list_paths *current);
 void free_array(char **argv);
 void free_all(char *command, char **command_array);
 void execute(char *path, char **av, char **env, int *status);
@@ -63,27 +63,27 @@ char *input(char *file);
 void free_list(list_paths *head);
 char **Handle_arrays(char *line, int status);
 char *num_to_char(int num);
-void print_error(char *shell_name, int count,
+void printError(char *shell_name, int count,
 char *command_array, int type_of_error);
 char *get_status(int n);
 char *get_process_id();
 char *_getenv(const char *name);
-int builtin_handler(char *command, char **command_array, list_paths *current,
+int builtInCommands(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status,
 list_paths *env_list, char **command_lines, char **argv);
 void nonbuiltin_handler(char **command_array, char *env[], int *status,
 int count, list_paths *current, char *argv[]);
 int implement_cd(char **command, char **argument);
 void implement_setenv(char *name, char *value, list_paths *pointer);
-char **scan_command_files(int op_mode, char *file_name, char *shell_name);
+char **scanCommands(int op_mode, char *file_name, char *shell_name);
 char **handle_non_interactivefile(char *file_name, char *shell_name);
 int checkdir(char *command, char **argument_vector, int count,
 char **command_array, int *status, char *command_line_before);
 char *convertNum2char(int number);
 int linecount(char *line);
-char **text_to_array(char *text_read);
+char **convert2Array(char *text_read);
 void no_file_handler(char *program, int number, char *file_name);
-unsigned int piped_characters_count(char *string, char c);
+unsigned int pipedCount(char *string, char a);
 char **pipes_handler();
 char *get_non_interactive_command(char **command_lines, int count);
 void permission_handler(char **command_array, int count,
@@ -92,7 +92,7 @@ void process_command(char *command, int *status, char ***command_array);
 int line_count(char *line);
 char **allocate_vector(int size);
 void free_vector(char **vector);
-char *process_token(char *token, int status);
+char *GenerateToken(char *string, int status);
 int tokenize_command(char *command, int status, char **argument_vector);
 char *handle_flags(char *token, char *command,
 char **argument_vector, int status);
@@ -102,7 +102,7 @@ list_paths *current, char *command, char **command_array);
 void exit_handler(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status, list_paths *env,
 char **command_lines);
-void handle_comments(char *input);
+void removeComments(char *input);
 
 
 #endif

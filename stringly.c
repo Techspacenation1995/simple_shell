@@ -13,14 +13,14 @@
 */
 int _strlen(char *s)
 {
-	int length = 0;
+	int l = 0;
 
 	while (*s != '\0')
 	{
-		length++;
+		l++;
 		s++;
 	}
-	return (length);
+	return (l);
 }
 
 /**
@@ -31,18 +31,18 @@ int _strlen(char *s)
 */
 char *_strdup(char *str)
 {
-	int len;
+	int lenght;
 	char *arr;
 
 	if (str == NULL)
 		return (NULL);
-	len = _strlen(str);
-	arr = malloc((sizeof(char) * len) + 1);
+	lenght = _strlen(str);
+	arr = malloc((sizeof(char) * lenght) + 1);
 	if (arr == NULL)
 		return (NULL);
-	arr[len] = '\0';
-	while (len--)
-		arr[len] = str[len];
+	arr[lenght] = '\0';
+	while (lenght--)
+		arr[lenght] = str[lenght];
 	return (arr);
 }
 
