@@ -42,7 +42,7 @@ list_paths *env_list, char **command_lines, char **argv)
 			printEnviroment(status);
 			break;
 		case 1:
-			exit_handler(command, command_array,
+			is_exit(command, command_array,
 			current, shell_name, count, status, env_list, command_lines);
 			break;
 		case 2:

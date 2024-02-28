@@ -12,7 +12,7 @@
  * Return:Nothing
  */
 
-void exit_handler(char *command, char **command_array, list_paths *current,
+void is_exit(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status,
 list_paths *env, char **command_lines)
 {
@@ -70,7 +70,7 @@ void free_whole(char **command_lines, int count, list_paths *env,
 		if (command_lines)
 			free(command_lines);
 	}
-	free_list(env);
-	free_list(current);
+	freeList(env);
+	freeList(current);
 	free_allocated(command, command_array);
 }

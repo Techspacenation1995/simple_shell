@@ -99,7 +99,7 @@ char **argument_vector, int status);
 char *_strtok(char *string, const char *delim);
 void free_whole(char **command_lines, int count, list_paths *env,
 list_paths *current, char *command, char **command_array);
-void exit_handler(char *command, char **command_array, list_paths *current,
+void is_exit(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status, list_paths *env,
 char **command_lines);
 void removeComments(char *input);

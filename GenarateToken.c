@@ -12,9 +12,9 @@ char *GenerateToken(char *string, int status)
 	cmde = NULL;
 	variable = NULL;
 
-	if (_strcmp("$$", token) == 0)
+	if (_strcmp("$$", string) == 0)
 		cmde = get_pid();
-	else if (_strcmp("$?", token) == 0)
+	else if (_strcmp("$?", string) == 0)
 		cmde = get_status(status);
 	else if (string[0] == '$' && string[1] != '\0')
 	{
