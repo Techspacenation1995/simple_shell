@@ -1,12 +1,12 @@
 #include "shell.h"
 /**
- * get_process_id - Retrieves the string representation of the current
+ * get_pid - Retrieves the string representation of the current
  * process ID.
  *
  * Return: A pointer to a string representing the process ID.
  */
 
-char *get_process_id()
+char *get_pid()
 {
 	char *ppid_s;
 	pid_t pid = getpid();

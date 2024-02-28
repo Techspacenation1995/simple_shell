@@ -27,7 +27,7 @@ char **Handle_arrays(char *command, int status)
 		if (token != NULL)
 		{
 			if (_strcmp("$$", token) == 0)
-				cmde = get_process_id();
+				cmde = get_pid();
 			else if (_strcmp("$?", token) == 0)
 				cmde = get_status(status);
 			else if ((token[0] == '$') && (token[1]))
