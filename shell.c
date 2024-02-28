@@ -33,7 +33,7 @@ int main(int argc, char *argv[], char *env[])
 			command = scan_cmd_user(current); /*prompt user&get command*/
 		if (!command)
 			continue;
-		cmd_arr = line_to_vector(command, *status);
+		cmd_arr = Handle_arrays(command, *status);
 		if (!cmd_arr)
 		{
 			free(command);
@@ -43,7 +43,7 @@ int main(int argc, char *argv[], char *env[])
 			continue;
 		if (builtin_handler(command, cmd_arr, current, argv[0],
 			count, status, NULL, command_lines, argv) != 0)
-			nonbuiltin_hndler(cmd_arr, env, status, count, current, argv);
+			nonbuiltin_handler(cmd_arr, env, status, count, current, argv);
 		free_all(command, cmd_arr);
 	}
 	free_list(current);

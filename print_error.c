@@ -14,7 +14,7 @@ char *command_array, int type_of_error)
 	char *counter_string;
 
 	/* Convert the command count to a string */
-	counter_string = number_to_character(count);
+	counter_string = convertNum2char(count);
 
 	/* Print the shell name, command count, and colon separator */
 	write(STDERR_FILENO, shell_name, _strlen(shell_name));

@@ -1,9 +1,9 @@
 #include"shell.h"
 /**
- * noninteractive_pipes_handler - processes shell commands with pipes
+ * pipes_handler - processes shell commands with pipes
  * Return: pointer to char array with output
  */
-char **noninteractive_pipes_handler()
+char **pipes_handler()
 {
 	char c[2048], *text_read, **command_lines;
 	size_t total_characters_read = 0;

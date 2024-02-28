@@ -12,7 +12,7 @@ void no_file_handler(char *program, int number, char *file_name)
 
 	char *counter_s;
 
-	counter_s = number_to_character(number);
+	counter_s = convertNum2char(number);
 	write(STDERR_FILENO, program, _strlen(program));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, counter_s, _strlen(counter_s));

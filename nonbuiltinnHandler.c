@@ -1,8 +1,7 @@
 #include"shell.h"
-/*BETTY OKAY*/
 
 /**
-* nonbuiltin_hndler - Handle non-builtin commands
+* nonbuiltin_handler - Handle non-builtin commands
 * @command_array: Array of command arguments
 * @env: Environment variables
 * @status: Pointer to the status variable
@@ -12,7 +11,7 @@
 * This function handles non-builtin commands in the shell.
 * by checking the access permission.
 */
-void nonbuiltin_hndler(char **command_array, char *env[], int *status,
+void nonbuiltin_handler(char **command_array, char *env[], int *status,
 						int count, list_paths *current, char *argv[])
 {
 	char *new_path;
@@ -21,7 +20,6 @@ void nonbuiltin_hndler(char **command_array, char *env[], int *status,
 		execute(command_array[0], command_array, env, status);
 	else
 	{
-		/*if the user just entered the command without the whole path*/
 		new_path = confirmaccess(command_array[0], current);
 		if (new_path)
 		{

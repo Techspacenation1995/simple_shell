@@ -1,13 +1,13 @@
 #include"shell.h"
 /**
- * noninteractive_files_handler - processes shell commands in file
+ * handle_non_interactivefile - processes shell commands in file
  * @file_name: name of file with shell commands
  * @shell_name: name of shell to use
  * Return: pointer to char array with output
  * Opens file, reads each line.
  * pointer to char array with output.
  */
-char **noninteractive_files_handler(char *file_name, char *shell_name)
+char **handle_non_interactivefile(char *file_name, char *shell_name)
 {
 	struct stat fileStat;
 	char *text, **command_lines;

@@ -49,6 +49,7 @@ int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _conv_string(char *s);
+void convertint(int n, char *str);
 /*----------*/
 void print_env(int *status);
 int mode(int argc);
@@ -60,7 +61,7 @@ void execute(char *path, char **av, char **env, int *status);
 void scan_cmd_file(char *file);
 char *input(char *file);
 void free_list(list_paths *head);
-char **line_to_vector(char *line, int status);
+char **Handle_arrays(char *line, int status);
 char *num_to_char(int num);
 void print_error(char *shell_name, int count,
 char *command_array, int type_of_error);
@@ -70,19 +71,20 @@ char *_getenv(const char *name);
 int builtin_handler(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status,
 list_paths *env_list, char **command_lines, char **argv);
-void nonbuiltin_hndler(char **command_array, char *env[], int *status,
+void nonbuiltin_handler(char **command_array, char *env[], int *status,
 int count, list_paths *current, char *argv[]);
 int implement_cd(char **command, char **argument);
 void implement_setenv(char *name, char *value, list_paths *pointer);
 char **scan_command_files(int op_mode, char *file_name, char *shell_name);
-char **noninteractive_files_handler(char *file_name, char *shell_name);
+char **handle_non_interactivefile(char *file_name, char *shell_name);
 int checkdir(char *command, char **argument_vector, int count,
 char **command_array, int *status, char *command_line_before);
-char *number_to_character(int number);
+char *convertNum2char(int number);
+int linecount(char *line);
 char **text_to_array(char *text_read);
 void no_file_handler(char *program, int number, char *file_name);
 unsigned int piped_characters_count(char *string, char c);
-char **noninteractive_pipes_handler();
+char **pipes_handler();
 char *get_non_interactive_command(char **command_lines, int count);
 void permission_handler(char **command_array, int count,
 char *executable, int *status, char *command);
@@ -92,7 +94,7 @@ char **allocate_vector(int size);
 void free_vector(char **vector);
 char *process_token(char *token, int status);
 int tokenize_command(char *command, int status, char **argument_vector);
-char *flags_handler(char *token, char *command,
+char *handle_flags(char *token, char *command,
 char **argument_vector, int status);
 char *_strtok(char *string, const char *delim);
 void free_whole(char **command_lines, int count, list_paths *env,
