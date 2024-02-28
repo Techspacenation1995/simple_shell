@@ -20,7 +20,7 @@ if (stat(command, &st) == 0)
 	{
 		print_error(argument_vector[0], count, command_array[0], PERMISSION_DENIED);
 		*status = PERMISSION_DENIED;
-		free_all(command_line_before, command_array);
+		free_allocated(command_line_before, command_array);
 		return (0);
 	}
 }

@@ -1,6 +1,4 @@
 #include"shell.h"
-/*BETTY OKAY*/
-
 /**
  * is_exit - Checks if the command is an "exit" command and handles it.
  * @command: The original command entered by the user.
@@ -60,7 +58,7 @@ list_paths *env, char **command_lines)
  * @current: A pointer to a list_paths struct representing the current path.
  * @count: The command count.
  * @command_lines:.
- * @env:.
+ * @env: environmental variables
  * Return: Nothing
 */
 void free_whole(char **command_lines, int count, list_paths *env,
@@ -74,5 +72,5 @@ void free_whole(char **command_lines, int count, list_paths *env,
 	}
 	free_list(env);
 	free_list(current);
-	free_all(command, command_array);
+	free_allocated(command, command_array);
 }

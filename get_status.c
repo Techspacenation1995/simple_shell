@@ -10,9 +10,7 @@ char *get_status(int n)
 {
 	char *status;
 
-	/* Convert the status value to a string */
 	status = convertNum2char(n);
 
-	/* Return the string representation of the status value */
 	return (status);
 }

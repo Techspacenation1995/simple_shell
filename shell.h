@@ -56,7 +56,7 @@ int mode(int argc);
 char *confirmaccess(char *command, list_paths *current);
 char *scan_cmd_user(list_paths *current);
 void free_array(char **argv);
-void free_all(char *command, char **command_array);
+void free_allocated(char *command, char **command_array);
 void execute(char *path, char **av, char **env, int *status);
 void scan_cmd_file(char *file);
 char *input(char *file);
@@ -66,7 +66,7 @@ char *num_to_char(int num);
 void print_error(char *shell_name, int count,
 char *command_array, int type_of_error);
 char *get_status(int n);
-char *get_process_id();
+char *get_pid();
 char *_getenv(const char *name);
 int builtin_handler(char *command, char **command_array, list_paths *current,
 char *shell_name, int count, int *status,

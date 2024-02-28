@@ -13,7 +13,7 @@ char *process_token(char *token, int status)
 	variable = NULL;
 
 	if (_strcmp("$$", token) == 0)
-		cmde = get_process_id();
+		cmde = get_pid();
 	else if (_strcmp("$?", token) == 0)
 		cmde = get_status(status);
 	else if (token[0] == '$' && token[1] != '\0')

@@ -44,7 +44,7 @@ int main(int argc, char *argv[], char *env[])
 		if (builtin_handler(command, cmd_arr, current, argv[0],
 			count, status, NULL, command_lines, argv) != 0)
 			nonbuiltin_handler(cmd_arr, env, status, count, current, argv);
-		free_all(command, cmd_arr);
+		free_allocated(command, cmd_arr);
 	}
 	free_list(current);
 	exit(*status);
