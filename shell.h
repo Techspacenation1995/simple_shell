@@ -48,7 +48,7 @@ char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
-int _atoi(char *s);
+int _conv_string(char *s);
 /*----------*/
 void print_env(int *status);
 int check_mode(int argc);
@@ -94,7 +94,7 @@ char *process_token(char *token, int status);
 int tokenize_command(char *command, int status, char **argument_vector);
 char *flags_handler(char *token, char *command,
 char **argument_vector, int status);
-char *_strtok(char *str, const char *delimiters);
+char *_strtok(char *string, const char *delim);
 void free_whole(char **command_lines, int count, list_paths *env,
 list_paths *current, char *command, char **command_array);
 void exit_handler(char *command, char **command_array, list_paths *current,

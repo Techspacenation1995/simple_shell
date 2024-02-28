@@ -1,41 +1,41 @@
 #include"shell.h"
 /**
- * _atoi - Converts a string to an integer.
+ * _conv_string - Converts a string to an integer.
  * @s: The string to be converted, input by user
  *
  * Return: The converted integer,
  * or -1 on conversion error.
  */
-int _atoi(char *s)
+int _conv_string(char *s)
 {
-	unsigned int n, i;
+	unsigned int y, x;
 	char positive;
 
-	i = 0;
-	n = 0;
+	x = 0;
+	y = 0;
 
 	/* Iterate through each character of the string */
-	while (s[i] != '\0')
+	while (s[x] != '\0')
 	{
 		/* Check if the character is a non-digit */
-		if (!((s[i] >= '0') && (s[i] <= '9')))
+		if (!((s[x] >= '0') && (s[x] <= '9')))
 		{
 			return (-1);
 		}
 
 		/* Check if the character is a digit */
-		if (((s[i] >= '0') && (s[i] <= '9')))
+		if (((s[x] >= '0') && (s[x] <= '9')))
 		{
-			n = (n * 10) + (s[i] - '0');
+			y = (y * 10) + (s[x] - '0');
 		}
-		else if (s[i] == '+')
+		else if (s[x] == '+')
 		{
 			positive++;
 		}
 
-		i++;
+		x++;
 	}
 
 	/* Return the converted integer */
-	return (n);
+	return (y);
 }

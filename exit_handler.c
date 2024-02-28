@@ -32,7 +32,7 @@ list_paths *env, char **command_lines)
 		{
 			if (_strlen(command_array[1]) <= 9)
 			{
-				exit_num = _atoi(command_array[1]);
+				exit_num = _conv_string(command_array[1]);
 				if (exit_num != -1)
 				{
 					free_whole(command_lines, count, env,
