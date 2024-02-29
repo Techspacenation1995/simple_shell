@@ -1,3 +1,5 @@
-This is a simple shell project done by:
-Akinbami Olamide and Anthony Peter
+This is a simplel linux shell project from Alx SWE program  done by:
+Akinbami Olamide
+and
+Anthony Peter
 
